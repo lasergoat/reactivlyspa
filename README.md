@@ -3,7 +3,17 @@
 
 -----
 
+SUPER COOL NOTES:
+====
+
+
 This is the Reactivly Frontend SPA. It gets messages from the [PHP api here](https://github.com/lasergoat/reactivly) and also is able to push events to the php api. A separate chrome extension is what the presenter uses to display the emojis.
+
+-------
+
+-------
+
+-------
 
 BORING STUFF BELOW
 ====
