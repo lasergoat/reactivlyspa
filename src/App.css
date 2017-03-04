@@ -49,8 +49,7 @@
 }
 
 .App-header {
-  height: 150px;
-  padding: 20px;
+  padding: .5rem 0 2rem 0;
   color: white;
 }
 
@@ -61,4 +60,73 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.App-alert {
+  position: fixed;
+  top: 0;
+  border-bottom: 4px solid green;
+  background-color: #1CA61C; /* green! */
+  padding: 3rem 1rem;
+  width: 100%;
+  opacity: .9;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+.url-wrapper {
+  background-color: white;
+  padding: 1rem;
+  opacity: .85;
+  text-align: center;
+  font-weight: bold;
+  color: #19E7CD;
+  text-align: center;
+}
+
+.url-wrapper h3 {
+  color: #333;
+  text-transform: uppercase;
+}
+
+.url-wrapper a,
+.url-wrapper button {
+  box-sizing: border-box;
+  color: #19E7CD;
+  margin: .4rem;
+  text-transform: uppercase;
+  background-color: #00FFCC;
+  color: white;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: 2px solid #EB0F92;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.url-wrapper a:hover,
+.url-wrapper button:hover {
+  cursor: pointer;
+}
+
+/* media query for Smaller Devices */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) 
+  and (max-device-width : 480px)
+{
+  .url-wrapper {
+    width:  100%;
+    padding: 1rem 0;
+  }
+
+  .url-wrapper a,
+  .url-wrapper button {
+    display: block;
+    width: 100%;
+    margin: .25rem 0;
+    font-size: 1rem;    
+  }
 }

@@ -2,14 +2,32 @@
   display: flex;
   flex-wrap: wrap;
   padding: 2rem;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .emoji {
-  flex: 1;
+  flex-basis: 16.6666667%;
   font-size: 4rem;
   cursor: pointer;
 }
 
 .emoji:hover {
   background-color: #DF198F;
+}
+
+/* media query for Smaller Devices */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) 
+  and (max-device-width : 480px)
+{
+  .emoji-wrapper {
+    padding: 0;
+  }
+
+  .emoji {
+    font-size: 3rem;
+  }
+
 }

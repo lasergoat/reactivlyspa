@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import io from 'socket.io-client';
 
 import get from 'lodash/get';
+import copy from 'copy-to-clipboard';
 
 import './App.css';
 import './Emoji.css';
@@ -31,7 +32,30 @@ class App extends Component {
       })
     });
   }
-  sendEmoji(emoji) {
+
+  alert(message) {
+    this.setState({
+      alert: message
+    });
+
+    // in 5 seconds remove the alert
+    setTimeout(() => {
+      this.setState({ alert: null })
+    }, 5000)
+  }
+
+  handleCopySlides() {
+    const {
+      url
+    } = this.state;
+
+    copy(url);
+
+    this.alert('The Slides URL Has been copied to your clipboard!');
+
+  }
+
+  handleSendEmoji(emoji) {
     socket.emit('emoji', {
       name: 'Bob',
       text: emoji
@@ -40,19 +64,35 @@ class App extends Component {
   }
   render() {
     const {
-      url
+      url,
+      alert,
     } = this.state;
 
     return (
       <div className="App">
+        {alert ? (
+          <div className="App-alert">
+            {alert}
+          </div>
+        ) : null}
         <div className="App-header">
           <img src="reactivly-logo.png" className="App-logo" alt="logo" />
         </div>
         <div className="App-content">
           {url ? (
             <div className="url-wrapper">
-              <h3>Sides:</h3>
-              <a target="_blank" href={url}>{url}</a>
+              <a
+                href={url}
+                target="_blank"
+              >
+                Open Sides
+              </a>
+              <button
+                type="button"
+                onClick={() => this.handleCopySlides()}
+              >
+                Copy Sides Url
+              </button>
             </div>
           ) : null}
           <div className="emoji-wrapper">
@@ -60,7 +100,7 @@ class App extends Component {
               <div
                 className="emoji"
                 key={emoji}
-                onClick={() => this.sendEmoji(emoji)}
+                onClick={() => this.handleSendEmoji(emoji)}
               >
                 {emoji}
               </div>
