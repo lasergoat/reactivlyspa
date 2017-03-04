@@ -4,6 +4,7 @@
   padding: 2rem;
   justify-content: center;
   margin-top: 1rem;
+  animation: Fade-in 1s ease-out;
 }
 
 .emoji {

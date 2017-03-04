@@ -44,8 +44,10 @@
 }
 
 .App-logo {
-  /*animation: App-logo-spin infinite 20s linear;*/
-  height: 80px;
+  /*animation: Spin infinite 2s linear alternate;*/
+  height: 5rem;
+  padding-top: 1.5rem;
+  animation: Fade-in .5s ease-out;
 }
 
 .App-header {
@@ -57,9 +59,14 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes Fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes Spin {
+  from { transform: rotate(-7deg); }
+  to { transform: rotate(7deg); }
 }
 
 .App-alert {
@@ -73,6 +80,7 @@
   text-align: center;
   font-weight: bold;
   color: white;
+  animation: Fade-in .5s ease-out;
 }
 
 .url-wrapper {
@@ -83,6 +91,7 @@
   font-weight: bold;
   color: #19E7CD;
   text-align: center;
+  animation: Fade-in 1s ease-out;
 }
 
 .url-wrapper h3 {
