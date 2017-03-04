@@ -19,6 +19,7 @@
 }
 
 .App:after {
+  pointer-events: none;
   content: ' ';
   display: block;
   position: absolute;
@@ -36,6 +37,10 @@
 @keyframes animatedBackground {
   from { background-position: 0 0; }
   to { background-position: 100% 0; }
+}
+
+.App-content {
+  z-index: 100;
 }
 
 .App-logo {

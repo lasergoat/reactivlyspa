@@ -1,0 +1,15 @@
+.emoji-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+
+.emoji {
+  flex: 1;
+  font-size: 4rem;
+  cursor: pointer;
+}
+
+.emoji:hover {
+  background-color: #DF198F;
+}
