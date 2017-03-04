@@ -28,7 +28,8 @@ class App extends Component {
       // this will be the Slides url
       console.log(data);
       this.setState({
-        url: get(data, 'data.url')
+        url: get(data, 'data.url'),
+        speakerName: get(data, 'data.name')
       })
     });
   }
@@ -65,6 +66,7 @@ class App extends Component {
   render() {
     const {
       url,
+      speakerName,
       alert,
     } = this.state;
 
@@ -81,6 +83,9 @@ class App extends Component {
         <div className="App-content">
           {url ? (
             <div className="url-wrapper">
+              {speakerName ? (
+                <h3>{speakerName} is presenting...</h3>
+              ) : null}
               <a
                 href={url}
                 target="_blank"

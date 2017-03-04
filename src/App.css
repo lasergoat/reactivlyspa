@@ -43,6 +43,11 @@
   z-index: 100;
 }
 
+.App-content h3 {
+  margin: 0;
+  margin-bottom: .2rem;
+}
+
 .App-logo {
   /*animation: Spin infinite 2s linear alternate;*/
   height: 5rem;
