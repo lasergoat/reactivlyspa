@@ -15,6 +15,18 @@ This is the Reactivly Frontend SPA. It gets messages from the [PHP api here](htt
 
 -------
 
+-------
+
+-------
+
+-------
+
+-------
+
+-------
+
+-------
+
 BORING STUFF BELOW
 ====
 
