@@ -19,6 +19,7 @@ class App extends Component {
       url: null,
     };
   }
+
   componentWillMount() {
     socket.on('event', (data) => {
       console.log(data);
