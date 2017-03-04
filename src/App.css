@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .App {
   text-align: center;
   background: rgb(255,100,100);
@@ -102,6 +108,7 @@
 .url-wrapper h3 {
   color: #333;
   text-transform: uppercase;
+  padding: 1rem;
 }
 
 .url-wrapper a,
@@ -112,6 +119,7 @@
   text-transform: uppercase;
   background-color: #00FFCC;
   color: white;
+  font-weight: normal;
   padding: .5rem 1rem;
   font-weight: bold;
   font-size: 1.5rem;

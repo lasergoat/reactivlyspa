@@ -93,12 +93,11 @@ class App extends Component {
               >
                 Open Sides
               </a>
-              <button
-                type="button"
+              <a
                 onClick={() => this.handleCopySlides()}
               >
                 Copy Sides Url
-              </button>
+              </a>
             </div>
           ) : null}
           <div className="emoji-wrapper">
