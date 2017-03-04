@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
 
-import 'socket.io';
+import io from 'socket.io-client';
 
 import './App.css';
 import './Emoji.css';
 
 import emojis from './emojis-util';
 
+const socket = io(`http://localhost:3001`)
+
 class App extends Component {
+  componentWillMount() {
+    socket.on('event', (data) => {
+      console.log(data);
+    });
+
+    socket.on("R:App\\Events\\BeginSlides", (message) => {
+        // increase the power everytime we load test route
+        console.log(message)
+    });
+  }
   sendEmoji(emoji) {
+    socket.emit('emoji', {
+      name: 'Bob',
+      text: emoji
+    })
     console.log(emoji);
   }
   render() {
@@ -22,6 +38,7 @@ class App extends Component {
             {emojis.map((emoji) => (
               <div
                 className="emoji"
+                key={emoji}
                 onClick={() => this.sendEmoji(emoji)}
               >
                 {emoji}
