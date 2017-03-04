@@ -1,3 +1,13 @@
+
+![reactivly-logo](https://cloud.githubusercontent.com/assets/15964/23580177/75dfe62e-00ca-11e7-96a2-db29c87529ab.png)
+
+-----
+
+This is the Reactivly Frontend SPA. It gets messages from the [PHP api here](https://github.com/lasergoat/reactivly) and also is able to push events to the php api. A separate chrome extension is what the presenter uses to display the emojis.
+
+BORING STUFF BELOW
+====
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
