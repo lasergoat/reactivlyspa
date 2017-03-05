@@ -66,13 +66,11 @@ class App extends Component {
       name: 'Bob',
       text: emoji
     })
-    console.log(emoji);
   }
 
   handleSubmitQuestion(values) {
-    console.log(values);
     const question = get(values, 'question');
-    socket.emit('emoji', {
+    socket.emit('question', {
       name: 'Bob',
       question
     });
