@@ -52,6 +52,7 @@ body {
 .App-content h3 {
   margin: 0;
   margin-bottom: .2rem;
+  padding-bottom: 3rem;
 }
 
 .App-logo {
@@ -107,9 +108,10 @@ body {
 }
 
 .section-wrapper h3 {
+  padding: 0;
   color: #333;
   text-transform: uppercase;
-  padding: 1rem;
+  padding-bottom: 1rem;
 }
 
 .section-wrapper input,
