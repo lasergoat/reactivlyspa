@@ -11,7 +11,7 @@ import './Emoji.css';
 
 import emojis from './emojis-util';
 
-const socket = io(`http://localhost:3001`)
+const socket = io(process.env.REACT_APP_SOCK_URL || `http://localhost:3001`)
 
 import {
   getRequest,
