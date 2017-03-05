@@ -13,6 +13,10 @@ import emojis from './emojis-util';
 
 const socket = io(`http://localhost:3001`)
 
+import {
+  getRequest,
+} from './http-util';
+
 // with more time this component would be broken 
 // into sub components FOR SURE
 class App extends Component {
@@ -31,7 +35,6 @@ class App extends Component {
 
     socket.on("R:App\\Events\\BeginSlides", (data) => {
       // this will be the Slides url
-      console.log(data);
       this.setState({
         url: get(data, 'data.url'),
         speakerName: get(data, 'data.name')
@@ -58,22 +61,22 @@ class App extends Component {
     copy(url);
 
     this.alert('The Slides URL Has been copied to your clipboard!');
-
   }
 
   handleSendEmoji(emoji) {
-    socket.emit('emoji', {
-      name: 'Bob',
-      text: emoji
-    })
+    const intensity = Math.random();
+
+    getRequest(`${process.env.REACT_APP_API_URL}react?emoji=${emoji}&intensity=${intensity}`)
+      .catch((err) => console.error(err))
   }
 
   handleSubmitQuestion(values) {
     const question = get(values, 'question');
-    socket.emit('question', {
-      name: 'Bob',
-      question
-    });
+    // normally we would just do a socket emit here,
+    // but we want to store our data in php
+    getRequest(`${process.env.REACT_APP_API_URL}ask?question=${question}`)
+      .catch((err) => console.error(err))
+
     this.setState({ askingQuestion: false });
     this.alert(
       <span>
