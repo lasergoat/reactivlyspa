@@ -81,6 +81,7 @@ body {
 }
 
 .App-alert {
+  z-index: 999999;
   position: fixed;
   top: 0;
   border-bottom: 4px solid green;
@@ -94,7 +95,7 @@ body {
   animation: Fade-in .5s ease-out;
 }
 
-.url-wrapper {
+.section-wrapper {
   background-color: white;
   padding: 1rem;
   opacity: .85;
@@ -105,14 +106,15 @@ body {
   animation: Fade-in 1s ease-out;
 }
 
-.url-wrapper h3 {
+.section-wrapper h3 {
   color: #333;
   text-transform: uppercase;
   padding: 1rem;
 }
 
-.url-wrapper a,
-.url-wrapper button {
+.section-wrapper input,
+.section-wrapper a,
+.section-wrapper button {
   box-sizing: border-box;
   color: #19E7CD;
   margin: .4rem;
@@ -128,9 +130,14 @@ body {
   text-decoration: none;
 }
 
-.url-wrapper a:hover,
-.url-wrapper button:hover {
+.section-wrapper a:hover,
+.section-wrapper button:hover {
   cursor: pointer;
+}
+
+/* question form styles */
+.section-wrapper input {
+  /*width: */
 }
 
 /* media query for Smaller Devices */
@@ -139,13 +146,14 @@ body {
 @media only screen and (min-device-width : 320px) 
   and (max-device-width : 480px)
 {
-  .url-wrapper {
+  .section-wrapper {
     width:  100%;
     padding: 1rem 0;
   }
 
-  .url-wrapper a,
-  .url-wrapper button {
+  .section-wrapper input,
+  .section-wrapper a,
+  .section-wrapper button {
     display: block;
     width: 100%;
     margin: .25rem 0;

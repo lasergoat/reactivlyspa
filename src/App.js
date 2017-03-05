@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 
 import get from 'lodash/get';
 import copy from 'copy-to-clipboard';
+import { LocalForm, Control } from 'react-redux-form';
 
 import './App.css';
 import './Emoji.css';
@@ -12,11 +13,14 @@ import emojis from './emojis-util';
 
 const socket = io(`http://localhost:3001`)
 
+// with more time this component would be broken 
+// into sub components FOR SURE
 class App extends Component {
   constructor() {
     super();
     this.state = {
       url: null,
+      askingQuestion: false,
     };
   }
 
@@ -64,6 +68,51 @@ class App extends Component {
     })
     console.log(emoji);
   }
+
+  handleSubmitQuestion(values) {
+    console.log(values);
+    const question = get(values, 'question');
+    socket.emit('emoji', {
+      name: 'Bob',
+      question
+    });
+    this.setState({ askingQuestion: false });
+    this.alert(
+      <span>
+        Your question has been sent!!!
+        <br />
+        <small>"{question}"</small>
+      </span>
+    );
+  }
+
+  renderQuestionSection() {
+    const {
+      askingQuestion
+    } = this.state;
+
+    return (
+      <div className="section-wrapper">
+        {askingQuestion ? (
+          <LocalForm
+            onSubmit={(values) => this.handleSubmitQuestion(values)}
+          >
+            <Control.text model=".question" />
+            <button>
+              Send
+            </button>
+          </LocalForm>
+        ) : (
+          <a
+            onClick={() => this.setState({askingQuestion: true})}
+            target="_blank"
+          >
+            Ask A Question
+          </a>
+        )}
+      </div>
+    );
+  }
   render() {
     const {
       url,
@@ -83,7 +132,7 @@ class App extends Component {
         </div>
         <div className="App-content">
           {url ? (
-            <div className="url-wrapper">
+            <div className="section-wrapper">
               {speakerName ? (
                 <h3>{speakerName} is presenting...</h3>
               ) : null}
@@ -111,6 +160,7 @@ class App extends Component {
               </div>
             ))}
           </div>
+          {this.renderQuestionSection()}
         </div>
       </div>
     );
