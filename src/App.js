@@ -11,11 +11,25 @@ import './Emoji.css';
 
 import emojis from './emojis-util';
 
-const socket = io(process.env.REACT_APP_SOCK_URL || `http://localhost:3001`)
+const socket = io(process.env.REACT_APP_SOCK_URL || `http://localhost`)
 
 import {
   getRequest,
 } from './http-util';
+
+function getQueryParams(qs) {
+  qs = qs.split('+').join(' ');
+
+  var params = {},
+      tokens,
+      re = /[?&]?([^=]+)=([^&]*)/g;
+
+  while (tokens = re.exec(qs)) {
+      params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+  }
+
+  return params;
+}
 
 // with more time this component would be broken 
 // into sub components FOR SURE
@@ -29,17 +43,35 @@ class App extends Component {
   }
 
   componentWillMount() {
-    socket.on('event', (data) => {
-      console.log(data);
+    const {
+      z: room
+    } = getQueryParams(document.location.search);
+console.log(room);
+    this.room = room;
+    socket.on('connect', () => {
+
+       // Connected, let's sign-up for to receive messages for this room
+       socket.emit('room', room);
     });
 
-    socket.on("R:App\\Events\\BeginSlides", (data) => {
-      // this will be the Slides url
-      this.setState({
-        url: get(data, 'data.url'),
-        speakerName: get(data, 'data.name')
-      })
+    socket.on('event', (str) => {
+       console.log(str);
     });
+
+    // socket.in(room).emit(`in${room}`, 'HERE');
+    //  socket.emit('room', room);
+
+    // socket.on('event', (data) => {
+    //   console.log(data);
+    // });
+
+    // socket.on("", (data) => {
+    //   // this will be the Slides url
+    //   this.setState({
+    //     url: get(data, 'data.url'),
+    //     speakerName: get(data, 'data.name')
+    //   })
+    // });
   }
 
   alert(message) {
@@ -66,8 +98,13 @@ class App extends Component {
   handleSendEmoji(emoji) {
     const intensity = Math.random();
 
-    getRequest(`${process.env.REACT_APP_API_URL}react?emoji=${emoji}&intensity=${intensity}`)
-      .catch((err) => console.error(err))
+    // getRequest(`${process.env.REACT_APP_API_URL}react?emoji=${emoji}&intensity=${intensity}`)
+      // .catch((err) => console.error(err))
+    
+    socket.emit('react', {
+      emoji,
+      intensity,
+    });
   }
 
   handleSubmitQuestion(values) {
