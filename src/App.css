@@ -96,6 +96,11 @@ body {
   animation: Fade-in .5s ease-out;
 }
 
+.App-alert {
+  border-color: red;
+  background-color: #ff4646; /* red! */
+}
+
 .section-wrapper {
   background-color: white;
   padding: 1rem;
